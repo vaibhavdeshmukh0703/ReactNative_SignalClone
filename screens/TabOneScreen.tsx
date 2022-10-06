@@ -1,32 +1,23 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
-
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+import { Text, View, StyleSheet, Image ,FlatList,Dimensions} from "react-native";
+import PersonMessage from "../components/PersonMessage";
+import PersonData from '../assets/dummy-data/ChatRooms'
+const userOne = PersonData[0];
+const userTwo = PersonData[1];
+export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      {/* <PersonMessage data={userOne}/>
+      <PersonMessage data={userTwo}/> */}
+      <FlatList data={PersonData} renderItem={({ item }): JSX.Element => (<PersonMessage data={item} />)}
+        showsVerticalScrollIndicator={false} 
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    backgroundColor: "white",
+   height: Dimensions.get("window").height
   },
 });
