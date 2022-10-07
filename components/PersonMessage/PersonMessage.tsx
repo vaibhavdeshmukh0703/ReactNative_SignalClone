@@ -1,13 +1,19 @@
 import * as React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image,Pressable } from "react-native";
+import Navigation from "../../navigation";
 import styles from "./PersonMessageStyle";
-
+import { useNavigation } from "@react-navigation/core";
 const PersonMessage = ({ ...props }): JSX.Element => {
-  console.log(props);
-   // const { personName, imageUrl, messageCount = 2, message, messageTime } = props.data;
-    const user = props.data.users[1]; 
+  
+  const user = props.data.users[1]; 
+  const navigation = useNavigation();
+  const onPress = () => {
+    console.log("presed") 
+    navigation.navigate("chats", { id: props.data.id });
+    
+  }
   return (
-    <View style={styles.container}>
+    <Pressable onPress={ onPress } style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}      
@@ -32,7 +38,7 @@ const PersonMessage = ({ ...props }): JSX.Element => {
           </Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
