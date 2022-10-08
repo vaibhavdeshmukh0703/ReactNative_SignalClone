@@ -1,26 +1,35 @@
-import { Pressable, StyleSheet, Text, TextInput, View ,KeyboardAvoidingView, Platform} from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import React, { useState } from "react";
 import {
-  AntDesign,
   SimpleLineIcons,
   Ionicons,
-  MaterialCommunityIcons,
+  MaterialIcons,
+  Feather,
 } from "@expo/vector-icons";
 
 const MessageInput = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   console.log(message);
   const sendMessage = () => {
     if (message) {
-        alert(message);
-        setMessage('');
+      alert(message);
+      setMessage("");
     }
   };
   return (
-      <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          keyboardVerticalOffset={100}
-          style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={100}
+      style={styles.container}
+    >
       <View style={styles.inputContainer}>
         <SimpleLineIcons name="emotsmile" size={30} color="#595959" />
         <TextInput
@@ -35,15 +44,10 @@ const MessageInput = () => {
       </View>
       <View style={styles.submitContainer}>
         <Pressable onPress={sendMessage} disabled={message ? false : true}>
-          {/* <Text style={styles.submit}>+</Text> */}
           {message ? (
-            <MaterialCommunityIcons
-              name="send-circle"
-              size={36}
-              color="#3777f0"
-            />
+            <MaterialIcons name="send" size={30} color="white" />
           ) : (
-            <AntDesign name="pluscircle" size={30} color="#3777f0" />
+            <Feather name="plus" size={30} color="white" />
           )}
         </Pressable>
       </View>
@@ -59,18 +63,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginHorizontal: 10,
+    marginVertical: 30,
   },
   inputContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     backgroundColor: "#f2f2f2",
     marginRight: 10,
     borderRadius: 15,
     padding: 5,
+    border: "1px solid black",
   },
   input: {
-    height: 30,
+    height: 25,
     //borderWidth: 1,
     flex: 1,
     padding: 10,
@@ -81,10 +88,12 @@ const styles = StyleSheet.create({
   },
 
   submitContainer: {
-    // height: 30,
-    // width: 30,
-    // //backgroundColor:'#3777f0',
-    // borderRadius: 30,
+    height: 40,
+    width: 40,
+    backgroundColor: "#3777f0",
+    borderRadius: 30,
+    justifyContent: "center",
+    alignItems: "center",
   },
   submit: {
     textAlign: "center",

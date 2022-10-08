@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 
-import React from "react";
+import React, { useMemo } from "react";
 
-const HomeScreenHeader = () => {
+const HomeScreenHeader = ({ ...props }): JSX.Element => {
+  console.log("Which Props we receive from navigator", props);
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -15,7 +16,7 @@ const HomeScreenHeader = () => {
         />
       </View>
       <View style={styles.headerTitleContainer}>
-        <Text style={styles.headerTitle}>Messages</Text>
+        <Text style={styles.headerTitle}>{props.children}</Text>
       </View>
       <View style={styles.iconContainer}>
         <Ionicons
@@ -28,7 +29,8 @@ const HomeScreenHeader = () => {
       </View>
     </View>
   );
-};
+}
+
 
 export default HomeScreenHeader;
 
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "Black",
+    textAlign:"center"  
   },
   iconContainer: {
     flex: 1,

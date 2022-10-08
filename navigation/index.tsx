@@ -11,7 +11,7 @@ import {
   DarkTheme,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {useRoute} from '@react-navigation/core'
+import { useRoute } from "@react-navigation/core";
 import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
@@ -53,31 +53,35 @@ export default function Navigation({
 const Stack = createNativeStackNavigator();
 const browserColorOptions = {
   headerTintColor: "#ffffff",
-          headerStyle:{backgroundColor:"#3777f0"}
-}
-
+  headerStyle: { backgroundColor: "#3777f0" },
+};
 
 function RootNavigator() {
   // const route = useRoute();
-  // console.log("From Header",route.params?.id);  
+  // console.log("From Header",route.params?.id);
   return (
-    <Stack.Navigator  initialRouteName="home" screenOptions={browserColorOptions}>
-        <Stack.Screen
+    <Stack.Navigator
+      initialRouteName="home"
+      screenOptions={browserColorOptions}
+    >
+      <Stack.Screen
         name="chats"
         component={ChatingScreen}
         options={{
           headerTitle: chatScreenHeader,
-          
         }}
-        
       />
-        <Stack.Screen
-          name="home"
-          component={HomeScreen}
-          //options={{ title:"Message" }}  
-        options={{ headerTitle: HomeScreenHeader, headerStyle:{backgroundColor:'white'}}}
-        />
-    
+      <Stack.Screen
+        name="home"
+        component={HomeScreen}
+        //options={{ title:"Message" }}
+        options={{
+          headerTitle: HomeScreenHeader,
+          headerStyle: { backgroundColor: "white" },
+          title: "Signal",
+        }}
+      />
+
       {/* <Stack.Screen
         name="NotFound" 
         component={NotFoundScreen}
