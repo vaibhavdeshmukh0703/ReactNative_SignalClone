@@ -50,6 +50,7 @@ const ChatingScreen = () => {
           data={Chats.messages}
           renderItem={({ item }): JSX.Element => <Message message={item} />}
           inverted
+          style={{marginBottom:20}}
         />
         <MessageInput />
       </View>

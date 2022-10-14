@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 
 import React, { useMemo } from "react";
 
 const HomeScreenHeader = ({ ...props }): JSX.Element => {
   console.log("Which Props we receive from navigator", props);
+  const onPress=()=>{
+    alert('This Feature Under Construction');
+  }
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -19,13 +22,17 @@ const HomeScreenHeader = ({ ...props }): JSX.Element => {
         <Text style={styles.headerTitle}>{props.children}</Text>
       </View>
       <View style={styles.iconContainer}>
+        <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
         <Ionicons
           name="camera-outline"
           size={30}
           color="black"
           style={{ marginRight: 5 }}
         />
-        <Feather name="edit-2" size={25} color="black" />
+        </TouchableOpacity>
+         <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
+        <Feather name="edit-2" size={25} color="black" style={{marginLeft:10}} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -69,10 +76,9 @@ const styles = StyleSheet.create({
   iconContainer: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     alignItems: "center",
+    marginRight:20
    // border: "1px solid black",
-    paddingHorizontal: 0,
-    marginHorizontal: 0,
   },
 });

@@ -6,6 +6,7 @@ import {
   View,
   KeyboardAvoidingView,
   Platform,
+  Dimensions
 } from "react-native";
 import React, { useState } from "react";
 import {
@@ -17,7 +18,7 @@ import {
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
-  console.log(message);
+
   const sendMessage = () => {
     if (message) {
       alert(message);
@@ -26,9 +27,10 @@ const MessageInput = () => {
   };
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior="padding"
       keyboardVerticalOffset={100}
       style={styles.container}
+      
     >
       <View style={styles.inputContainer}>
         <SimpleLineIcons name="emotsmile" size={30} color="#595959" />
@@ -37,7 +39,7 @@ const MessageInput = () => {
           value={message}
           onChangeText={setMessage}
           style={styles.input}
-          showSoftInputOnFocus={false}
+         // showSoftInputOnFocus={false}
         />
         <Ionicons name="mic-outline" size={30} color="#595959" />
         <Ionicons name="camera-outline" size={30} color="#595959" />
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginHorizontal: 10,
-    marginVertical: 30,
+    marginVertical: 10,
   },
   inputContainer: {
     flex: 1,
@@ -80,7 +82,6 @@ const styles = StyleSheet.create({
     height: 25,
     //borderWidth: 1,
     flex: 1,
-    padding: 10,
     marginHorizontal: 10,
     borderRadius: 15,
     color: "grey",
